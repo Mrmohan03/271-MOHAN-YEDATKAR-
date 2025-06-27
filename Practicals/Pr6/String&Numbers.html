@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prime Numbers Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #eef2f3;
+    }
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .input-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      text-align: center;
+      color: #333;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Find Prime Numbers</h2>
+
+  <div class="input-group">
+    <label for="startNumber">Enter Starting Number:</label>
+    <input type="number" id="startNumber">
+  </div>
+
+  <div class="input-group">
+    <label for="endNumber">Enter Ending Number:</label>
+    <input type="number" id="endNumber">
+  </div>
+
+  <button onclick="findPrimes()">Find Primes</button>
+
+  <div class="result" id="output"></div>
+</div>
+
+<script>
+// Function to check if a number is prime
+function isPrime(n) {
+  if (n <= 1) return false;
+  if (n === 2) return true;
+  if (n % 2 === 0) return false;
+  for (let i = 3; i <= Math.sqrt(n); i += 2) {
+    if (n % i === 0) return false;
+  }
+  return true;
+}
+
+// Function to find prime numbers between two numbers
+function findPrimes() {
+  let start = parseInt(document.getElementById('startNumber').value);
+  let end = parseInt(document.getElementById('endNumber').value);
+  let primes = [];
+
+  if (isNaN(start) || isNaN(end)) {
+    document.getElementById('output').innerText = "Please enter valid numbers!";
+    return;
+  }
+  if (start > end) {
+    document.getElementById('output').innerText = "Starting number must be less than or equal to ending number!";
+    return;
+  }
+
+  for (let i = start; i <= end; i++) {
+    if (isPrime(i)) {
+      primes.push(i);
+    }
+  }
+
+  if (primes.length > 0) {
+    document.getElementById('output').innerText = `Prime numbers between ${start} and ${end}:\n${primes.join(", ")}`;
+  } else {
+    document.getElementById('output').innerText = `No prime numbers found between ${start} and ${end}.`;
+  }
+}
+</script>
+
+</body>
+</html>

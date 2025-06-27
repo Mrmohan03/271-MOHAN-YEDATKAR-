@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Form with Profile Image Preview</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+    .form-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ccc;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    input[type="file"] {
+      display: none;
+    }
+    .form-group {
+      text-align: left;
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    textarea {
+      resize: vertical;
+    }
+    .submit-btn {
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background-color: #45a049;
+    }
+    .error {
+      color: red;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2>Employee Registration</h2>
+
+  <!-- Profile Image -->
+  <img src="https://via.placeholder.com/120" id="profileImage" class="profile-pic" onclick="document.getElementById('imageInput').click()">
+
+  <!-- Hidden File Input -->
+  <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)">
+
+  <form id="employeeForm" onsubmit="return validateForm()" enctype="multipart/form-data">
+    
+    <div class="form-group">
+      <label>Employee Name:</label>
+      <input type="text" id="name" name="name">
+    </div>
+
+    <div class="form-group">
+      <label>Email Address:</label>
+      <input type="email" id="email" name="email">
+    </div>
+
+    <div class="form-group">
+      <label>Mobile Number:</label>
+      <input type="text" id="mobile" name="mobile">
+    </div>
+
+    <div class="form-group">
+      <label>Address:</label>
+      <textarea id="address" name="address" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Salary:</label>
+      <input type="text" id="salary" name="salary">
+    </div>
+
+    <p id="errorMsg" class="error"></p>
+
+    <button type="submit" class="submit-btn">Submit</button>
+  </form>
+</div>
+
+<script>
+// Preview selected image
+function previewImage(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('profileImage').src = e.target.result;
+    }
+    reader.readAsDataURL(file);
+  }
+}
+
+// Validate form
+function validateForm() {
+  let name = document.getElementById('name').value.trim();
+  let email = document.getElementById('email').value.trim();
+  let mobile = document.getElementById('mobile').value.trim();
+  let address = document.getElementById('address').value.trim();
+  let salary = document.getElementById('salary').value.trim();
+  let imageInput = document.getElementById('imageInput').value.trim();
+  let errorMsg = '';
+
+  if (name === '') {
+    errorMsg = 'Name is required.';
+  } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+    errorMsg = 'Please enter a valid email address.';
+  } else if (!/^\d{10}$/.test(mobile)) {
+    errorMsg = 'Mobile number must be 10 digits.';
+  } else if (address === '') {
+    errorMsg = 'Address is required.';
+  } else if (!/^\d+(\.\d{1,2})?$/.test(salary) || parseFloat(salary) <= 0) {
+    errorMsg = 'Please enter a valid positive salary.';
+  } else if (imageInput === '') {
+    errorMsg = 'Please upload an employee image.';
+  }
+
+  if (errorMsg !== '') {
+    document.getElementById('errorMsg').innerText = errorMsg;
+    return false;
+  }
+
+  document.getElementById('errorMsg').innerText = '';
+  alert('Employee Form Submitted Successfully!');
+  return true;
+}
+</script>
+
+</body>
+</html>

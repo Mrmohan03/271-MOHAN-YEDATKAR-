@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My College Info</title>
+ <style>
+    /* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.banner {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+h1 {
+  color: #2c3e50;
+  font-size: 2.2rem;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #34495e;
+  margin-bottom: 10px;
+}
+
+.about p {
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #3498db;
+  color: white;
+}
+
+td {
+  background-color: #ecf6fd;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.image-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+ </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <img src="https://mgmcen.ac.in/images/slide4.jpg" alt="College Banner" class="banner" />
+      <h1>MGM College of Engineering, Nanded</h1>
+    </header>
+
+    <section class="about">
+      <h2>About Us</h2>
+      <p>
+        MGM College of Engineering, Nanded offers top-quality technical education and has state-of-the-art infrastructure, expert faculty, and a vibrant student community.
+      </p>
+    </section>
+
+    <section class="info-table">
+      <h2>College Details</h2>
+      <table>
+        <tr>
+          <th>Established</th>
+          <td>1984</td>
+        </tr>
+        <tr>
+          <th>Affiliation</th>
+          <td>Dr.Babasaheb Ambedkar Technological University</td>
+        </tr>
+        <tr>
+          <th>Courses Offered</th>
+          <td>BCA,BSE,B.Tech, M.Tech,</td>
+        </tr>
+        <tr>
+          <th>Location</th>
+          <td>Nanded, Maharashtra</td>
+        </tr>
+      </table>
+    </section>
+
+    <section class="gallery">
+      <h2>Gallery</h2>
+      <div class="image-grid">
+        <img src="https://mgmcen.ac.in/images/gallery/19102016163702-Inner-Courtyard.jpg" alt="Campus View" />
+        <img src="https://mgmcen.ac.in/images/gallery/Lab%20Inauguration-20132812150304.jpg" alt="Computer Lab" />
+        <img src="https://mgmcen.ac.in/images/Jhankaar/j8.jpg" alt="College Event" />
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>
